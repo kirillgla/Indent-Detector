@@ -3,10 +3,12 @@ package indentDetector;
 public class BraceLayout {
     private int openingBraces;
     private int closingBraces;
+    private boolean startsWithClosingBrace;
 
-    BraceLayout(int openingBraces, int closingBraces) {
+    BraceLayout(int openingBraces, int closingBraces, boolean startsWithClosingBrace) {
         this.openingBraces = openingBraces;
         this.closingBraces = closingBraces;
+        this.startsWithClosingBrace = startsWithClosingBrace;
     }
 
     @Override
@@ -28,4 +30,7 @@ public class BraceLayout {
         return closingBraces;
     }
 
+    public boolean startsWithClosing() {
+        return startsWithClosingBrace;
+    }
 }

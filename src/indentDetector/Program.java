@@ -20,6 +20,10 @@ public class Program {
         try {
             String[] lines = getLines(args[0]);
             CodeLine[] codeLines = parseLines(lines);
+            if (!hasNoIndentMix(codeLines)) {
+                throw new InvalidIndentationException();
+            }
+
             // TODO
         } catch (IOException e) {
             System.err.println("Could not access file");
@@ -44,11 +48,10 @@ public class Program {
         return lines.toArray(new String[0]);
     }
 
-    static CodeLine[] parseLines(String[] inputs) throws InvalidIndentationException {
+    private static CodeLine[] parseLines(String[] inputs) throws InvalidIndentationException {
         ArrayList<CodeLine> lines = new ArrayList<>();
         for (String input : inputs) {
-            if (input.isEmpty())
-            {
+            if (input.isEmpty()) {
                 continue;
             }
 
@@ -57,8 +60,30 @@ public class Program {
         return lines.toArray(new CodeLine[0]);
     }
 
-    static boolean isNullOrWhitespace(String s)
-    {
+    static boolean isNullOrWhitespace(String s) {
         return s == null || s.isEmpty() || s.trim().isEmpty();
+    }
+
+    private static boolean hasNoIndentMix(CodeLine[] lines) {
+        // By this moment no line can have 'mixed' indent type,
+        // so it's enough to check only cross-line consistency
+        IndentType indentType = IndentType.Unknown;
+
+        for (CodeLine line : lines) {
+            if (line.getIndentType() == IndentType.Unknown) {
+                continue;
+            }
+
+            if (indentType == IndentType.Unknown) {
+                indentType = line.getIndentType();
+                continue;
+            }
+
+            if (line.getIndentType() != indentType) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -19,11 +19,12 @@ public class GetBraceLayoutTester {
     @Parameterized.Parameters
     public static Object[][] layoutExamples() {
         return new Object[][]{
-                {"public static void main(String[] args) {", new BraceLayout(1, 0)},
-                {"try { System.out.println(); } catch (Exception e) {", new BraceLayout(2, 1)},
-                {"System.out.println();", new BraceLayout(0, 0)},
-                {"}", new BraceLayout(0, 1)},
-                {"} catch (Exception e) {", new BraceLayout(1, 1)}
+                {"public static void main(String[] args) {", new BraceLayout(1, 0, false)},
+                {"try { System.out.println(); } catch (Exception e) {", new BraceLayout(2, 1, false)},
+                {"System.out.println();", new BraceLayout(0, 0, false)},
+                {"}", new BraceLayout(0, 1, true)},
+                {"} catch (Exception e) {", new BraceLayout(1, 1, true)},
+                {"} else if (arg == null) {", new BraceLayout(1, 1, true)}
         };
     }
 

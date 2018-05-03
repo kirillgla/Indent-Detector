@@ -20,11 +20,11 @@ public class ParseTester {
     public static Object[][] inputExamples() {
         return new Object[][]{
                 {"    System.out.println(\"Hello, world!\");",
-                        new CodeLine(IndentType.Spaces, 4, new BraceLayout(0, 0))},
+                        new CodeLine(IndentType.Spaces, 4, new BraceLayout(0, 0, false))},
                 {"public class Program {",
-                        new CodeLine(IndentType.Unknown, 0, new BraceLayout(1, 0))},
+                        new CodeLine(IndentType.Unknown, 0, new BraceLayout(1, 0, false))},
                 {"\t\t}",
-                        new CodeLine(IndentType.Tabs, 2, new BraceLayout(0, 1))}
+                        new CodeLine(IndentType.Tabs, 2, new BraceLayout(0, 1, true))}
         };
     }
 

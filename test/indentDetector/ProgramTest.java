@@ -7,8 +7,7 @@ import static org.junit.Assert.*;
 @SuppressWarnings("ConstantConditions")
 public class ProgramTest {
     @Test
-    public void testIsNullOrWhitespaceOnNull()
-    {
+    public void testIsNullOrWhitespaceOnNull() {
         String arg = null;
 
         boolean result = Program.isNullOrWhitespace(arg);
@@ -17,8 +16,7 @@ public class ProgramTest {
     }
 
     @Test
-    public void testIsNullOrWhitespaceOnEmptyString()
-    {
+    public void testIsNullOrWhitespaceOnEmptyString() {
         String arg = "";
 
         boolean result = Program.isNullOrWhitespace(arg);
@@ -27,8 +25,7 @@ public class ProgramTest {
     }
 
     @Test
-    public void testIsNullOrWhiteSpaceOnWhitespaceString()
-    {
+    public void testIsNullOrWhiteSpaceOnWhitespaceString() {
         String arg = "  \t ";
 
         boolean result = Program.isNullOrWhitespace(arg);
@@ -37,8 +34,7 @@ public class ProgramTest {
     }
 
     @Test
-    public void testIsNullOrWhitespaceOnNonEmptyString()
-    {
+    public void testIsNullOrWhitespaceOnNonEmptyString() {
         String arg = "    System.out.println(\"Hello, world!\");";
 
         boolean result = Program.isNullOrWhitespace(arg);

@@ -98,24 +98,17 @@ public final class CodeLine {
     static BraceLayout getBraceLayout(String input) {
         int openingBraces = 0;
         int closingBraces = 0;
-        char firstBrace = 0;
 
         for (int i = 0; i < input.length(); i++) {
             char current = input.charAt(i);
 
             if (current == '{') {
                 openingBraces++;
-                if (firstBrace == 0) {
-                    firstBrace = '{';
-                }
             } else if (current == '}') {
                 closingBraces++;
-                if (firstBrace == 0) {
-                    firstBrace = '}';
-                }
             }
         }
 
-        return new BraceLayout(openingBraces, closingBraces);
+        return new BraceLayout(openingBraces, closingBraces, input.trim().charAt(0) == '}');
     }
 }
