@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5698fe07-7bd3-4d6f-a7cc-5ac9941fed7e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/indentDetector/BraceLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/BraceLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/CodeLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/CodeLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/indentDetector/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/indentDetector/ParseTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/indentDetector/ParseTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/indentDetector/ProgramTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/indentDetector/ProgramTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,13 +24,14 @@
       <file leaf-file-name="Program.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/indentDetector/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+            <state relative-caret-position="357">
+              <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getLines#0;class#Program#0" />
                 <element signature="method#parseLines#0;class#Program#0" />
-                <element signature="method#hasNoIndentMix#0;class#Program#0" />
+                <element signature="method#getIndentType#0;class#Program#0" />
+                <element signature="method#getNumerOfMismatches#0;class#Program#0" />
               </folding>
             </state>
           </provider>
@@ -50,6 +47,19 @@
                 <element signature="method#testIsNullOrWhitespaceOnEmptyString#0;class#ProgramTest#0" />
                 <element signature="method#testIsNullOrWhiteSpaceOnWhitespaceString#0;class#ProgramTest#0" />
                 <element signature="method#testIsNullOrWhitespaceOnNonEmptyString#0;class#ProgramTest#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BraceLayout.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/indentDetector/BraceLayout.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+              <folding>
+                <element signature="e#956#957#0" expanded="true" />
+                <element signature="e#1007#1008#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,10 +90,11 @@
         <option value="$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java" />
         <option value="$PROJECT_DIR$/test/indentDetector/ParseTester.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/CodeLine.java" />
-        <option value="$PROJECT_DIR$/src/indentDetector/BraceLayout.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/IndentType.java" />
-        <option value="$PROJECT_DIR$/src/indentDetector/Program.java" />
         <option value="$PROJECT_DIR$/test/indentDetector/ProgramTest.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/indentDetector/BraceLayout.java" />
+        <option value="$PROJECT_DIR$/src/indentDetector/Program.java" />
       </list>
     </option>
   </component>
@@ -177,7 +188,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in IndentDetector">
+  <component name="RunManager" selected="Application.Program">
     <configuration name="Program" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="indentDetector.Program" />
       <module name="IndentDetector" />
@@ -234,14 +245,11 @@
       <option name="presentableId" value="Default" />
       <updated>1525335256058</updated>
       <workItem from="1525335257901" duration="9008000" />
-      <workItem from="1525356780433" duration="1971000" />
+      <workItem from="1525356780433" duration="4324000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GetBraceLayoutTester - 2018.05.03 at 16h 29m 11s.xml">
-      <configuration name="GetBraceLayoutTester" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GetBraceLayoutTester - 2018.05.03 at 16h 31m 13s.xml">
       <configuration name="GetBraceLayoutTester" configurationId="JUnit" />
     </history-entry>
@@ -269,9 +277,12 @@
     <history-entry file="All_in_IndentDetector - 2018.05.03 at 17h 24m 52s.xml">
       <configuration name="All in IndentDetector" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_IndentDetector - 2018.05.03 at 19h 33m 41s.xml">
+      <configuration name="All in IndentDetector" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10979000" />
+    <option name="totallyTimeSpent" value="13332000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -291,7 +302,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -327,7 +338,8 @@
             <element signature="imports" expanded="true" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="method#parseLines#0;class#Program#0" />
-            <element signature="method#hasNoIndentMix#0;class#Program#0" />
+            <element signature="method#getIndentType#0;class#Program#0" />
+            <element signature="method#getNumerOfMismatches#0;class#Program#0" />
           </folding>
         </state>
       </provider>
@@ -415,13 +427,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/indentDetector/BraceLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/indentDetector/CodeLine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -441,6 +446,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="80">
+            <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/indentDetector/BraceLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+          <folding>
+            <element signature="e#956#957#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/indentDetector/ProgramTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -456,13 +482,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/indentDetector/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="66" column="28" lean-forward="true" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+        <state relative-caret-position="357">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="method#parseLines#0;class#Program#0" />
-            <element signature="method#hasNoIndentMix#0;class#Program#0" />
+            <element signature="method#getIndentType#0;class#Program#0" />
+            <element signature="method#getNumerOfMismatches#0;class#Program#0" />
           </folding>
         </state>
       </provider>

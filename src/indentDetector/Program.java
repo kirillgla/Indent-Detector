@@ -20,11 +20,20 @@ public class Program {
         try {
             String[] lines = getLines(args[0]);
             CodeLine[] codeLines = parseLines(lines);
-            if (!hasNoIndentMix(codeLines)) {
-                throw new InvalidIndentationException();
+            IndentType indentType = getIndentType(codeLines);
+            switch (indentType) {
+                case Unknown:
+                    System.out.println("File seems to have no indents at all...");
+                    break;
+                case Spaces:
+                    int bestMatch = getBestMatch(codeLines, 1,  8);
+                    System.out.println("Default indentation in file seems to be " + bestMatch + " spaces");
+                    break;
+                case Tabs:
+                    bestMatch = getBestMatch(codeLines, 1, 2);
+                    System.out.println("Default indentation in file seems to be " + bestMatch + " tabs");
+                    break;
             }
-
-            // TODO
         } catch (IOException e) {
             System.err.println("Could not access file");
         } catch (InvalidIndentationException e) {
@@ -64,7 +73,7 @@ public class Program {
         return s == null || s.isEmpty() || s.trim().isEmpty();
     }
 
-    private static boolean hasNoIndentMix(CodeLine[] lines) {
+    private static IndentType getIndentType(CodeLine[] lines) throws InvalidIndentationException {
         // By this moment no line can have 'mixed' indent type,
         // so it's enough to check only cross-line consistency
         IndentType indentType = IndentType.Unknown;
@@ -80,10 +89,52 @@ public class Program {
             }
 
             if (line.getIndentType() != indentType) {
-                return false;
+                throw new InvalidIndentationException();
             }
         }
 
-        return true;
+        return indentType;
+    }
+
+    private static int getNumberOfMismatches(CodeLine[] lines, int singleIndentSize) {
+        int openedBraces = 0;
+        int mismatchesFound = 0;
+
+        for (CodeLine line : lines) {
+            if (line.getBraceLayout().startsWithClosing()) {
+                openedBraces--;
+            }
+
+            int expectedIndentSize = openedBraces * singleIndentSize;
+            int actualIndentSize = line.getIndentSize();
+
+            mismatchesFound += Math.abs(expectedIndentSize - actualIndentSize);
+
+            openedBraces += line.getBraceLayout().getBraceDifference();
+            if (line.getBraceLayout().startsWithClosing()) {
+                openedBraces++;
+            }
+        }
+
+        return mismatchesFound;
+    }
+
+    private static int getBestMatch(CodeLine[] lines, int minIndent, int maxIndent) {
+        if (minIndent > maxIndent) {
+            throw new RuntimeException("Error: at least one indentation should be possible");
+        }
+
+        int minNumberOfMismatches = Integer.MAX_VALUE;
+        int bestIndent = -1;
+
+        for (int indent = minIndent; indent <= maxIndent; indent++) {
+            int numberOfMismatches = getNumberOfMismatches(lines, indent);
+            if (numberOfMismatches < minNumberOfMismatches) {
+                minNumberOfMismatches = numberOfMismatches;
+                bestIndent = indent;
+            }
+        }
+
+        return bestIndent;
     }
 }

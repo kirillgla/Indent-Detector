@@ -13,8 +13,7 @@ public class BraceLayout {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof BraceLayout))
-        {
+        if (!(obj instanceof BraceLayout)) {
             return false;
         }
 
@@ -32,5 +31,9 @@ public class BraceLayout {
 
     public boolean startsWithClosing() {
         return startsWithClosingBrace;
+    }
+
+    int getBraceDifference() {
+        return openingBraces - closingBraces;
     }
 }
