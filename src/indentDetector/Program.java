@@ -26,13 +26,12 @@ public class Program {
                     System.out.println("File seems to have no indents at all...");
                     break;
                 case Spaces:
-                    int bestMatch = getBestMatch(codeLines, 1,  8);
+                    int bestMatch = getBestMatch(codeLines, 8);
                     System.out.println("Default indentation in file seems to be " + bestMatch + " spaces");
                     break;
                 case Tabs:
-                    bestMatch = getBestMatch(codeLines, 1, 2);
+                    bestMatch = getBestMatch(codeLines, 2);
                     System.out.println("Default indentation in file seems to be " + bestMatch + " tabs");
-                    break;
             }
         } catch (IOException e) {
             System.err.println("Could not access file");
@@ -58,13 +57,14 @@ public class Program {
     }
 
     private static CodeLine[] parseLines(String[] inputs) throws InvalidIndentationException {
+        ArrayList<OpenBraceType> openBraces = new ArrayList<>();
         ArrayList<CodeLine> lines = new ArrayList<>();
-        for (String input : inputs) {
-            if (input.isEmpty()) {
+        for (int i = 0; i < inputs.length; i++) {
+            if (inputs[i].isEmpty()) {
                 continue;
             }
 
-            lines.add(CodeLine.parse(input));
+            lines.add(CodeLine.parse(inputs[i], i == inputs.length - 1 ? "" : inputs[i + 1], openBraces));
         }
         return lines.toArray(new CodeLine[0]);
     }
@@ -119,16 +119,19 @@ public class Program {
         return mismatchesFound;
     }
 
-    private static int getBestMatch(CodeLine[] lines, int minIndent, int maxIndent) {
-        if (minIndent > maxIndent) {
+    private static int getBestMatch(CodeLine[] lines, int maxIndent) {
+        if (maxIndent < 1) {
             throw new RuntimeException("Error: at least one indentation should be possible");
         }
 
         int minNumberOfMismatches = Integer.MAX_VALUE;
         int bestIndent = -1;
 
-        for (int indent = minIndent; indent <= maxIndent; indent++) {
+        for (int indent = 1; indent <= maxIndent; indent++) {
             int numberOfMismatches = getNumberOfMismatches(lines, indent);
+
+            System.out.println("Number of mismatches for indentation of " + indent + ": " + numberOfMismatches);
+
             if (numberOfMismatches < minNumberOfMismatches) {
                 minNumberOfMismatches = numberOfMismatches;
                 bestIndent = indent;

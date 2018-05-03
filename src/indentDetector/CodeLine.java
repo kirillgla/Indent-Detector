@@ -1,5 +1,7 @@
 package indentDetector;
 
+import java.util.ArrayList;
+
 public final class CodeLine {
     private IndentType indentType;
     private int indentSize;
@@ -37,7 +39,14 @@ public final class CodeLine {
     }
 
     // input is assumed to contain one line only
-    static CodeLine parse(String input) throws InvalidIndentationException {
+    //
+    // nextLine is required to determine whether 'case' label
+    // should be treated as opening brace or not
+    // (i.e. has content or is directly followed by another case label)
+    //
+    // openBraces are required to determine whether 'break' operator
+    // should be treated as closing brace or not (i.e. terminates 'case' label or not)
+    static CodeLine parse(String input, String nextLine, ArrayList<OpenBraceType> openBraces) throws InvalidIndentationException {
         if (Program.isNullOrWhitespace(input)) {
             throw new IllegalArgumentException("Empty line cannot be parsed into CodeLine");
         }
@@ -53,7 +62,7 @@ public final class CodeLine {
             indentSize = getIndentSize(input);
         }
 
-        BraceLayout braceLayout = getBraceLayout(input);
+        BraceLayout braceLayout = getBraceLayout(input, nextLine, openBraces);
 
         return new CodeLine(indentType, indentSize, braceLayout);
     }
@@ -95,20 +104,42 @@ public final class CodeLine {
         return count;
     }
 
-    static BraceLayout getBraceLayout(String input) {
-        int openingBraces = 0;
-        int closingBraces = 0;
+    static BraceLayout getBraceLayout(String input, String nextLine, ArrayList<OpenBraceType> openBraces) {
+        int trueOpenBraces = 0;
+        int trueClosingBraces = 0;
+
+        SubstringDetector caseDetector = new SubstringDetector("\\Wcase\\W", 6);
+        SubstringDetector defaultDetector = new SubstringDetector("\\Wdefault\\s*:", Integer.MAX_VALUE);
+        SubstringDetector breakDetector = new SubstringDetector("\\Wbreak\\W", 7);
 
         for (int i = 0; i < input.length(); i++) {
             char current = input.charAt(i);
 
+            if (caseDetector.nextChar(current)) {
+                // TODO: when case is directly followed by another case it should not be treated as open brace
+                trueOpenBraces++;
+                openBraces.add(OpenBraceType.Case);
+            }
+            if (defaultDetector.nextChar(current)) {
+                trueOpenBraces++;
+                openBraces.add(OpenBraceType.Case);
+            }
+            if (breakDetector.nextChar(current) && openBraces.get(openBraces.size() - 1) == OpenBraceType.Case) {
+                trueClosingBraces++;
+                openBraces.remove(openBraces.size() - 1);
+            }
+
             if (current == '{') {
-                openingBraces++;
+                trueOpenBraces++;
+                openBraces.add(OpenBraceType.Other);
             } else if (current == '}') {
-                closingBraces++;
+                trueClosingBraces++;
+                if (openBraces.get(openBraces.size() - 1) == OpenBraceType.Case) {
+                    openBraces.remove(openBraces.size() - 1);
+                }
+                openBraces.remove(openBraces.size() - 1);
             }
         }
-
-        return new BraceLayout(openingBraces, closingBraces, input.trim().charAt(0) == '}');
+        return new BraceLayout(trueOpenBraces, trueClosingBraces, input.trim().charAt(0) == '}');
     }
 }

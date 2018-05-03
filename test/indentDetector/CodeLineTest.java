@@ -2,6 +2,8 @@ package indentDetector;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class CodeLineTest {
@@ -11,7 +13,7 @@ public class CodeLineTest {
     public void testParseWhitespaceLine() throws Exception {
         String input = "    ";
 
-        CodeLine.parse(input);
+        CodeLine.parse(input, "", new ArrayList<>());
     }
 
     // ==== getIndentType tests ====
