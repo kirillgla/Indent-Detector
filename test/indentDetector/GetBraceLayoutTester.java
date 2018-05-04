@@ -11,13 +11,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class GetBraceLayoutTester {
     private String input;
-    private String nextLine;
     private ArrayList<OpenBraceType> context;
     private BraceLayout expected;
 
-    public GetBraceLayoutTester(String input, String nextLine, ArrayList<OpenBraceType> context, BraceLayout expected) {
+    public GetBraceLayoutTester(String input, ArrayList<OpenBraceType> context, BraceLayout expected) {
         this.input = input;
-        this.nextLine = nextLine;
         this.context = context;
         this.expected = expected;
     }
@@ -27,25 +25,21 @@ public class GetBraceLayoutTester {
         return new Object[][]{
                 {
                         "public static void main(String[] args) {",
-                        "",
                         new ArrayList<>(),
                         new BraceLayout(1, 0, false)
                 },
                 {
                         "try { System.out.println(); } catch (Exception e) {",
-                        "",
                         new ArrayList<>(),
                         new BraceLayout(2, 1, false)
                 },
                 {
                         "System.out.println();",
-                        "",
                         new ArrayList<>(),
                         new BraceLayout(0, 0, false)
                 },
                 {
                         "}",
-                        "",
                         new ArrayList<OpenBraceType>() {{
                             add(OpenBraceType.Other);
                         }},
@@ -53,7 +47,6 @@ public class GetBraceLayoutTester {
                 },
                 {
                         "} catch (Exception e) {",
-                        "",
                         new ArrayList<OpenBraceType>() {{
                             add(OpenBraceType.Other);
                         }},
@@ -61,7 +54,6 @@ public class GetBraceLayoutTester {
                 },
                 {
                         "} else if (arg == null) {",
-                        "",
                         new ArrayList<OpenBraceType>() {{
                             add(OpenBraceType.Other);
                         }},
@@ -72,7 +64,9 @@ public class GetBraceLayoutTester {
 
     @Test
     public void testGetBraceLayout() throws Exception {
-        BraceLayout result = CodeLine.getBraceLayout(input, nextLine, context);
+        BraceLayout result = new Parser() {{
+            openBraces = context;
+        }}.getBraceLayout(input);
 
         assertEquals(expected, result);
     }

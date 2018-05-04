@@ -4,6 +4,7 @@ public class BraceLayout {
     private int openingBraces;
     private int closingBraces;
     private boolean startsWithClosingBrace;
+    // TODO: 'boolean terminatesSwitch;' for more accurate results
 
     BraceLayout(int openingBraces, int closingBraces, boolean startsWithClosingBrace) {
         this.openingBraces = openingBraces;

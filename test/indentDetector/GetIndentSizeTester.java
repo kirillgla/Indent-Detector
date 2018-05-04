@@ -31,7 +31,7 @@ public class GetIndentSizeTester {
 
     @Test
     public void testGetIndentSize() {
-        int result = CodeLine.getIndentSize(input);
+        int result = Parser.getIndentSize(input);
 
         assertEquals(expected, result);
     }

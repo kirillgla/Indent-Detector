@@ -32,6 +32,7 @@ public class Program {
                 case Tabs:
                     bestMatch = getBestMatch(codeLines, 2);
                     System.out.println("Default indentation in file seems to be " + bestMatch + " tabs");
+                    break;
             }
         } catch (IOException e) {
             System.err.println("Could not access file");
@@ -57,20 +58,16 @@ public class Program {
     }
 
     private static CodeLine[] parseLines(String[] inputs) throws InvalidIndentationException {
-        ArrayList<OpenBraceType> openBraces = new ArrayList<>();
+        Parser parser = new Parser();
         ArrayList<CodeLine> lines = new ArrayList<>();
-        for (int i = 0; i < inputs.length; i++) {
-            if (inputs[i].isEmpty()) {
+        for (String input : inputs) {
+            if (Parser.isNullOrWhitespace(input)) {
                 continue;
             }
 
-            lines.add(CodeLine.parse(inputs[i], i == inputs.length - 1 ? "" : inputs[i + 1], openBraces));
+            lines.add(parser.parse(input));
         }
         return lines.toArray(new CodeLine[0]);
-    }
-
-    static boolean isNullOrWhitespace(String s) {
-        return s == null || s.isEmpty() || s.trim().isEmpty();
     }
 
     private static IndentType getIndentType(CodeLine[] lines) throws InvalidIndentationException {
@@ -136,6 +133,9 @@ public class Program {
                 minNumberOfMismatches = numberOfMismatches;
                 bestIndent = indent;
             }
+
+            // DEBUG
+            // throw new RuntimeException("Stopped iterating");
         }
 
         return bestIndent;
