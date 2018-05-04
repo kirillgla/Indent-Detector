@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Program {
+    public static final int AMBIGUOUS_INDENT_MISMATCHES = 100;
+
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Please, provide path to file to analyze");
@@ -38,6 +40,8 @@ public class Program {
             System.err.println("Could not access file");
         } catch (InvalidIndentationException e) {
             System.err.println("File has mixed space and tab indents");
+        } catch (AmbiguousIndentationException e) {
+            System.err.println("No indents seem good enough for that file...");
         }
     }
 
@@ -116,7 +120,7 @@ public class Program {
         return mismatchesFound;
     }
 
-    private static int getBestMatch(CodeLine[] lines, int maxIndent) {
+    private static int getBestMatch(CodeLine[] lines, int maxIndent) throws AmbiguousIndentationException {
         if (maxIndent < 1) {
             throw new RuntimeException("Error: at least one indentation should be possible");
         }
@@ -133,9 +137,10 @@ public class Program {
                 minNumberOfMismatches = numberOfMismatches;
                 bestIndent = indent;
             }
+        }
 
-            // DEBUG
-            // throw new RuntimeException("Stopped iterating");
+        if (minNumberOfMismatches > AMBIGUOUS_INDENT_MISMATCHES) {
+            throw new AmbiguousIndentationException();
         }
 
         return bestIndent;
