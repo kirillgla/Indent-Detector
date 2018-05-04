@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5698fe07-7bd3-4d6f-a7cc-5ac9941fed7e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/CodeLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/CodeLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java" afterDir="false" />
-    </list>
+    <list default="true" id="5698fe07-7bd3-4d6f-a7cc-5ac9941fed7e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -244,7 +238,7 @@
       <option name="presentableId" value="Default" />
       <updated>1525335256058</updated>
       <workItem from="1525335257901" duration="9008000" />
-      <workItem from="1525356780433" duration="31819000" />
+      <workItem from="1525356780433" duration="31881000" />
     </task>
     <servers />
   </component>
@@ -281,7 +275,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40827000" />
+    <option name="totallyTimeSpent" value="40889000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -297,7 +291,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32825485" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32825485" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32965517" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
