@@ -22,6 +22,11 @@ public class BraceLayout {
         return openingBraces == other.openingBraces && closingBraces == other.closingBraces;
     }
 
+    @Override
+    public String toString() {
+        return "" + openingBraces + " opening, " + closingBraces + " closing" + (startsWithClosingBrace? ", starts with closing": "");
+    }
+
     public int getOpeningBraces() {
         return openingBraces;
     }

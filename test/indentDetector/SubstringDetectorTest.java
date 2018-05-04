@@ -45,8 +45,8 @@ public class SubstringDetectorTest {
     }
 
     @Test
-    public void testSubstringDetectorOnComplicatedExpression() {
-        SubstringDetector detector = new SubstringDetector("\\Wdefault\\s*:", Integer.MAX_VALUE);
+    public void testSubstringDetectorOnDefaultExpression() {
+        SubstringDetector detector = new SubstringDetector(".*\\Wdefault\\s*:", Integer.MAX_VALUE);
 
         boolean d = detector.nextChar('d');
         boolean e = detector.nextChar('e');
@@ -85,6 +85,29 @@ public class SubstringDetectorTest {
         assertFalse(e);
         assertFalse(a);
         assertFalse(k);
-        assertFalse (ending);
+        assertFalse(ending);
+    }
+
+    @Test
+    public void testSubstringDetectorOnComplicatedExpression() {
+        SubstringDetector detector = new SubstringDetector("(.*\\Wcase\\W)|(.*\\Wdefault\\s*:)", Integer.MAX_VALUE);
+
+        boolean d = detector.nextChar('d');
+        boolean e = detector.nextChar('e');
+        boolean f = detector.nextChar('f');
+        boolean a = detector.nextChar('a');
+        boolean u = detector.nextChar('u');
+        boolean l = detector.nextChar('l');
+        boolean t = detector.nextChar('t');
+        boolean colon = detector.nextChar(':');
+
+        assertFalse(d);
+        assertFalse(e);
+        assertFalse(f);
+        assertFalse(a);
+        assertFalse(u);
+        assertFalse(l);
+        assertFalse(t);
+        assertTrue(colon);
     }
 }

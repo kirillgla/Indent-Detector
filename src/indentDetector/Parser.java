@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 class Parser {
     private ParseMode parseMode;
-    
+
     protected ArrayList<OpenBraceType> openBraces;
 
     // It isn't really necessary to store these
@@ -15,7 +15,6 @@ class Parser {
     private SubstringDetector stringDetector;
     private SubstringDetector charDetector;
     private SubstringDetector caseDetector;
-    private SubstringDetector defaultDetector;
     private SubstringDetector breakDetector;
 
     Parser() {
@@ -24,10 +23,9 @@ class Parser {
         singleLineCommentDetector = new SubstringDetector("//", 2);
         openCommentDetector = new SubstringDetector("/\\*", 2);
         closingCommentDetector = new SubstringDetector("\\*/", 2);
-        stringDetector = new SubstringDetector("\"", 1);
-        charDetector = new SubstringDetector("'", 1);
-        caseDetector = new SubstringDetector("\\Wcase\\W", 6);
-        defaultDetector = new SubstringDetector(".*\\Wdefault\\s*:", Integer.MAX_VALUE);
+        stringDetector = new SubstringDetector("[^\\\\]\"", 2);
+        charDetector = new SubstringDetector("[^\\\\]'", 2);
+        caseDetector = new SubstringDetector("(.*\\Wcase\\W)|(.*\\Wdefault\\s*:)", Integer.MAX_VALUE);
         breakDetector = new SubstringDetector("\\Wbreak\\W", 7);
 
         openBraces = new ArrayList<>();
@@ -40,7 +38,6 @@ class Parser {
         stringDetector.nextChar(nextChar);
         charDetector.nextChar(nextChar);
         caseDetector.nextChar(nextChar);
-        defaultDetector.nextChar(nextChar);
         breakDetector.nextChar(nextChar);
     }
 
@@ -55,7 +52,6 @@ class Parser {
         openCommentDetector.clear();
         closingCommentDetector.clear();
         caseDetector.clear();
-        defaultDetector.clear();
         breakDetector.clear();
 
         IndentType indentType = getIndentType(input);
@@ -121,13 +117,13 @@ class Parser {
             }
 
             if (caseDetector.isMatch()) {
-                // TODO: when case is directly followed by another case (or default) it should not be treated as open brace
-                trueOpenBraces++;
-                openBraces.add(OpenBraceType.Case);
-            }
-            if (defaultDetector.isMatch()) {
-                trueOpenBraces++;
-                openBraces.add(OpenBraceType.Case);
+                // If input file contains valid java code,
+                // this will not throw an exception
+                if (openBraces.get(openBraces.size() - 1) != OpenBraceType.Case) {
+                    // previous label must've been terminated without `break`
+                    trueOpenBraces++;
+                    openBraces.add(OpenBraceType.Case);
+                }
             }
 
             if (breakDetector.isMatch())
@@ -191,5 +187,10 @@ class Parser {
             count++;
         }
         return count;
+    }
+
+    @Override
+    public String toString() {
+        return "Parser: " + parseMode;
     }
 }
