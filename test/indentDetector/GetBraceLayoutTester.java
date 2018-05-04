@@ -63,7 +63,7 @@ public class GetBraceLayoutTester {
     }
 
     @Test
-    public void testGetBraceLayout() throws Exception {
+    public void testGetBraceLayout() {
         BraceLayout result = new Parser() {{
             openBraces = context;
         }}.getBraceLayout(input);

@@ -5,15 +5,15 @@ public final class CodeLine {
     private int indentSize;
     private BraceLayout braceLayout;
 
-    public IndentType getIndentType() {
+    IndentType getIndentType() {
         return indentType;
     }
 
-    public int getIndentSize() {
+    int getIndentSize() {
         return indentSize;
     }
 
-    public BraceLayout getBraceLayout() {
+    BraceLayout getBraceLayout() {
         return braceLayout;
     }
 

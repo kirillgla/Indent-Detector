@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Program {
-    public static final int AMBIGUOUS_INDENT_MISMATCHES = 100;
-
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Please, provide path to file to analyze");
@@ -39,9 +37,9 @@ public class Program {
         } catch (IOException e) {
             System.err.println("Could not access file");
         } catch (InvalidIndentationException e) {
-            System.err.println("File has mixed space and tab indents");
+            System.out.println("File has mixed space and tab indents");
         } catch (AmbiguousIndentationException e) {
-            System.err.println("No indents seem good enough for that file...");
+            System.out.println("No indents seem good enough for that file...");
         }
     }
 
@@ -130,16 +128,13 @@ public class Program {
 
         for (int indent = 1; indent <= maxIndent; indent++) {
             int numberOfMismatches = getNumberOfMismatches(lines, indent);
-
-            System.out.println("Number of mismatches for indentation of " + indent + ": " + numberOfMismatches);
-
             if (numberOfMismatches < minNumberOfMismatches) {
                 minNumberOfMismatches = numberOfMismatches;
                 bestIndent = indent;
             }
         }
 
-        if (minNumberOfMismatches > AMBIGUOUS_INDENT_MISMATCHES) {
+        if (minNumberOfMismatches > lines.length / 2) {
             throw new AmbiguousIndentationException();
         }
 

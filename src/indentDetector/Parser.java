@@ -5,7 +5,7 @@ import java.util.ArrayList;
 class Parser {
     private ParseMode parseMode;
 
-    protected ArrayList<OpenBraceType> openBraces;
+    ArrayList<OpenBraceType> openBraces;
 
     // It isn't really necessary to store these
     // in between parsing operations, though
