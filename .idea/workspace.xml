@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5698fe07-7bd3-4d6f-a7cc-5ac9941fed7e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/BraceLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/BraceLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/CodeLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/CodeLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/InvalidIndentationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/InvalidIndentationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/InvalidSyntaxException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/InvalidSyntaxException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/OpenBraceType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/OpenBraceType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/ParseMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/ParseMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/indentDetector/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/SubstringDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/SubstringDetector.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +20,10 @@
       <file leaf-file-name="Program.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/indentDetector/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="205" lean-forward="true" selection-start-line="205" selection-end-line="205" />
+            <state relative-caret-position="252">
+              <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
               <folding>
                 <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
-                <element signature="method#main#0;class#Program#0" />
                 <element signature="docComment;method#getLines#0;class#Program#0" />
                 <element signature="method#getLines#0;class#Program#0" />
                 <element signature="docComment;method#parseLines#0;class#Program#0" />
@@ -42,7 +33,6 @@
                 <element signature="docComment;method#getNumberOfMismatches#0;class#Program#0" />
                 <element signature="method#getNumberOfMismatches#0;class#Program#0" />
                 <element signature="docComment;method#getBestMatch#0;class#Program#0" />
-                <element signature="method#getBestMatch#0;class#Program#0" />
               </folding>
             </state>
           </provider>
@@ -87,7 +77,6 @@
         <option value="$PROJECT_DIR$/test/indentDetector/ParserTest.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/IndentType.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/Parser.java" />
-        <option value="$PROJECT_DIR$/src/indentDetector/Program.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/InvalidIndentationException.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/InvalidSyntaxException.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/OpenBraceType.java" />
@@ -95,6 +84,7 @@
         <option value="$PROJECT_DIR$/src/indentDetector/SubstringDetector.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/CodeLine.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/BraceLayout.java" />
+        <option value="$PROJECT_DIR$/src/indentDetector/Program.java" />
       </list>
     </option>
   </component>
@@ -198,7 +188,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in IndentDetector">
+  <component name="RunManager" selected="Application.Program">
     <configuration name="Program" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="indentDetector.Program" />
       <module name="IndentDetector" />
@@ -257,14 +247,11 @@
       <workItem from="1525335257901" duration="9008000" />
       <workItem from="1525356780433" duration="31881000" />
       <workItem from="1525539329733" duration="6124000" />
-      <workItem from="1525552962450" duration="2310000" />
+      <workItem from="1525552962450" duration="2593000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_IndentDetector - 2018.05.04 at 14h 39m 06s.xml">
-      <configuration name="All in IndentDetector" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_IndentDetector - 2018.05.04 at 14h 39m 29s.xml">
       <configuration name="All in IndentDetector" configurationId="JUnit" />
     </history-entry>
@@ -292,9 +279,12 @@
     <history-entry file="All_in_IndentDetector - 2018.05.05 at 20h 59m 41s.xml">
       <configuration name="All in IndentDetector" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_IndentDetector - 2018.05.06 at 00h 19m 17s.xml">
+      <configuration name="All in IndentDetector" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49323000" />
+    <option name="totallyTimeSpent" value="49606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -348,7 +338,6 @@
           <caret line="128" column="70" selection-start-line="128" selection-start-column="70" selection-end-line="128" selection-end-column="70" />
           <folding>
             <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
-            <element signature="method#main#0;class#Program#0" />
             <element signature="docComment;method#getLines#0;class#Program#0" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="docComment;method#parseLines#0;class#Program#0" />
@@ -358,7 +347,6 @@
             <element signature="docComment;method#getNumberOfMismatches#0;class#Program#0" />
             <element signature="method#getNumberOfMismatches#0;class#Program#0" />
             <element signature="docComment;method#getBestMatch#0;class#Program#0" />
-            <element signature="method#getBestMatch#0;class#Program#0" />
           </folding>
         </state>
       </provider>
@@ -399,7 +387,6 @@
           <caret line="129" column="74" selection-start-line="129" selection-start-column="74" selection-end-line="129" selection-end-column="74" />
           <folding>
             <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
-            <element signature="method#main#0;class#Program#0" />
             <element signature="docComment;method#getLines#0;class#Program#0" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="docComment;method#parseLines#0;class#Program#0" />
@@ -409,7 +396,6 @@
             <element signature="docComment;method#getNumberOfMismatches#0;class#Program#0" />
             <element signature="method#getNumberOfMismatches#0;class#Program#0" />
             <element signature="docComment;method#getBestMatch#0;class#Program#0" />
-            <element signature="method#getBestMatch#0;class#Program#0" />
           </folding>
         </state>
       </provider>
@@ -430,7 +416,6 @@
           <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
           <folding>
             <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
-            <element signature="method#main#0;class#Program#0" />
             <element signature="docComment;method#getLines#0;class#Program#0" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="docComment;method#parseLines#0;class#Program#0" />
@@ -440,7 +425,6 @@
             <element signature="docComment;method#getNumberOfMismatches#0;class#Program#0" />
             <element signature="method#getNumberOfMismatches#0;class#Program#0" />
             <element signature="docComment;method#getBestMatch#0;class#Program#0" />
-            <element signature="method#getBestMatch#0;class#Program#0" />
           </folding>
         </state>
       </provider>
@@ -665,11 +649,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/indentDetector/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="205" lean-forward="true" selection-start-line="205" selection-end-line="205" />
+        <state relative-caret-position="252">
+          <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
           <folding>
             <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
-            <element signature="method#main#0;class#Program#0" />
             <element signature="docComment;method#getLines#0;class#Program#0" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="docComment;method#parseLines#0;class#Program#0" />
@@ -679,7 +662,6 @@
             <element signature="docComment;method#getNumberOfMismatches#0;class#Program#0" />
             <element signature="method#getNumberOfMismatches#0;class#Program#0" />
             <element signature="docComment;method#getBestMatch#0;class#Program#0" />
-            <element signature="method#getBestMatch#0;class#Program#0" />
           </folding>
         </state>
       </provider>

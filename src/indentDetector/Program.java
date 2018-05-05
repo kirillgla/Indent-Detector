@@ -29,6 +29,8 @@ public class Program {
             return;
         }
 
+        System.out.println("Analyzing '" + args[0] + "':");
+
         try {
             String[] lines = getLines(args[0]);
             CodeLine[] codeLines = parseLines(lines);
@@ -183,12 +185,14 @@ public class Program {
         for (int indentSize = 1; indentSize <= maxIndentSize; indentSize++) {
             int numberOfMismatches = getNumberOfMismatches(lines, indentSize);
 
+            /*
             System.out.println("Mismatches for indentation of "
                     + indentSize
                     + ": "
                     + numberOfMismatches
                     + " out of "
                     + lines.length *AMBIGUITY_LIMIT + " maximum");
+            */
 
             if (numberOfMismatches < minNumberOfMismatches) {
                 minNumberOfMismatches = numberOfMismatches;
