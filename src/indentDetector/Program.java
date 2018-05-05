@@ -33,19 +33,19 @@ public class Program {
             String[] lines = getLines(args[0]);
             CodeLine[] codeLines = parseLines(lines);
             IndentType indentType = getIndentType(codeLines);
+            int bestMatch = 0;
             switch (indentType) {
                 case Unknown:
                     System.out.println("File seems to have no indents at all...");
-                    break;
+                    return;
                 case Spaces:
-                    int bestMatch = getBestMatch(codeLines, 8);
-                    System.out.println("Default indentation in file seems to be " + bestMatch + " spaces");
+                    bestMatch = getBestMatch(codeLines, 8);
                     break;
                 case Tabs:
                     bestMatch = getBestMatch(codeLines, 2);
-                    System.out.println("Default indentation in file seems to be " + bestMatch + " tabs");
                     break;
             }
+            System.out.println("Default indentation in file seems to be " + bestMatch + " spaces");
         } catch (IOException e) {
             System.err.println("Could not access file.");
         } catch (InvalidIndentationException e) {
@@ -57,6 +57,13 @@ public class Program {
         }
     }
 
+    /**
+     * Reads text from file
+     * @param path path to input file
+     * @return array of lines of input file
+     * @throws IOException
+     *  when  reading fails
+     */
     private static String[] getLines(String path) throws IOException {
         File file = new File(path);
         FileReader reader = new FileReader(file);
@@ -86,9 +93,14 @@ public class Program {
         return lines.toArray(new CodeLine[0]);
     }
 
+    /**
+     * Decide which indent type is present in file
+     * @param lines data to be analysed
+     * @return indent type in file
+     * @throws InvalidIndentationException
+     *  when cross-line indent consistency is violated
+     */
     private static IndentType getIndentType(CodeLine[] lines) throws InvalidIndentationException {
-        // By this moment no line can have 'mixed' indent type,
-        // so it's enough to check only cross-line consistency
         IndentType indentType = IndentType.Unknown;
 
         for (CodeLine line : lines) {
@@ -109,6 +121,13 @@ public class Program {
         return indentType;
     }
 
+    /**
+     * Given that indentation size is exactly {@param singleIndentSize} characters,
+     * determines how much expected indent layout diverges from the actual one
+     * @param lines input file contents
+     * @param singleIndentSize default indentation size suggested
+     * @return number of mismatches between expected and actual layout
+     */
     private static int getNumberOfMismatches(CodeLine[] lines, int singleIndentSize) {
         int openedBraces = 0;
         int mismatchesFound = 0;
