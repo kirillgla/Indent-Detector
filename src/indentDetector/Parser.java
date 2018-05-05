@@ -3,6 +3,9 @@ package indentDetector;
 import java.util.ArrayList;
 
 class Parser {
+    // Remembering this mode
+    // in between parsing operations
+    // allows to handle multiline comments
     private ParseMode parseMode;
 
     ArrayList<OpenBraceType> openBraces;
@@ -44,7 +47,7 @@ class Parser {
     /**
      * input is assumed to contain one line only
      */
-    CodeLine parse(String input) throws InvalidIndentationException {
+    CodeLine parse(String input) throws InvalidIndentationException, InvalidSyntaxException {
         if (Parser.isNullOrWhitespace(input)) {
             throw new IllegalArgumentException("Empty line cannot be parsed into CodeLine");
         }
@@ -67,7 +70,7 @@ class Parser {
         return new CodeLine(indentType, indentSize, braceLayout);
     }
 
-    BraceLayout getBraceLayout(String input) {
+    BraceLayout getBraceLayout(String input) throws InvalidSyntaxException {
         int trueOpenBraces = 0;
         int trueClosingBraces = 0;
 
@@ -76,7 +79,7 @@ class Parser {
 
             invalidateDetectors(current);
 
-            // Don't parse anything while dealing with non-code data
+            // Don't parse anything while processing non-code data
             switch (parseMode) {
                 case MultilineComment:
                     if (closingCommentDetector.isMatch()) {
@@ -93,8 +96,6 @@ class Parser {
                         parseMode = ParseMode.Ordinary;
                     }
                     continue;
-                default:
-                    break;
             }
 
             if (singleLineCommentDetector.isMatch()) {
@@ -117,22 +118,27 @@ class Parser {
             }
 
             if (caseDetector.isMatch()) {
-                // If input file contains valid java code,
-                // this will not throw an exception
+                if (openBraces.size() == 0) {
+                    throw new InvalidSyntaxException();
+                }
+
                 if (openBraces.get(openBraces.size() - 1) != OpenBraceType.Case) {
-                    // previous label must've been terminated without `break`
+                    // otherwise previous label must've been terminated without `break`
                     trueOpenBraces++;
                     openBraces.add(OpenBraceType.Case);
                 }
             }
 
-            if (breakDetector.isMatch())
-                // If input file contains valid java code,
-                // this will not throw an exception
+            if (breakDetector.isMatch()) {
+                if (openBraces.size() == 0) {
+                    throw new InvalidSyntaxException();
+                }
+
                 if (openBraces.get(openBraces.size() - 1) == OpenBraceType.Case) {
                     trueClosingBraces++;
                     openBraces.remove(openBraces.size() - 1);
                 }
+            }
 
             if (current == '{') {
                 trueOpenBraces++;

@@ -7,6 +7,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Program {
+    /**
+     * Governs amount of indentation mismatches
+     * to be allowed before the program decides
+     * file is indented properly.
+     *
+     * To be precise, this is highest allowed
+     * (indent mismatch number) to (line number) ratio.
+     * used in {@link #getBestMatch}
+     */
+    private static final double AMBIGUITY_LIMIT = 0.65;
+
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Please, provide path to file to analyze");
@@ -40,6 +51,8 @@ public class Program {
             System.out.println("File has mixed space and tab indents");
         } catch (AmbiguousIndentationException e) {
             System.out.println("No indents seem good enough for that file...");
+        } catch (InvalidSyntaxException e) {
+            System.out.println("File doesn't contain valid java code");
         }
     }
 
@@ -59,7 +72,7 @@ public class Program {
         return lines.toArray(new String[0]);
     }
 
-    private static CodeLine[] parseLines(String[] inputs) throws InvalidIndentationException {
+    private static CodeLine[] parseLines(String[] inputs) throws InvalidIndentationException, InvalidSyntaxException {
         Parser parser = new Parser();
         ArrayList<CodeLine> lines = new ArrayList<>();
         for (String input : inputs) {
@@ -118,23 +131,31 @@ public class Program {
         return mismatchesFound;
     }
 
-    private static int getBestMatch(CodeLine[] lines, int maxIndent) throws AmbiguousIndentationException {
-        if (maxIndent < 1) {
+    private static int getBestMatch(CodeLine[] lines, int maxIndentSize) throws AmbiguousIndentationException {
+        if (maxIndentSize < 1) {
             throw new RuntimeException("Error: at least one indentation should be possible");
         }
 
         int minNumberOfMismatches = Integer.MAX_VALUE;
         int bestIndent = -1;
 
-        for (int indent = 1; indent <= maxIndent; indent++) {
-            int numberOfMismatches = getNumberOfMismatches(lines, indent);
+        for (int indentSize = 1; indentSize <= maxIndentSize; indentSize++) {
+            int numberOfMismatches = getNumberOfMismatches(lines, indentSize);
+
+            System.out.println("Mismatches for indentation of "
+                    + indentSize
+                    + ": "
+                    + numberOfMismatches
+                    + " out of "
+                    + lines.length / 2 + " maximum");
+
             if (numberOfMismatches < minNumberOfMismatches) {
                 minNumberOfMismatches = numberOfMismatches;
-                bestIndent = indent;
+                bestIndent = indentSize;
             }
         }
 
-        if (minNumberOfMismatches > lines.length / 2) {
+        if (minNumberOfMismatches > lines.length * AMBIGUITY_LIMIT) {
             throw new AmbiguousIndentationException();
         }
 

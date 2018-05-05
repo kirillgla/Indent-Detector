@@ -63,7 +63,7 @@ public class GetBraceLayoutTester {
     }
 
     @Test
-    public void testGetBraceLayout() {
+    public void testGetBraceLayout() throws InvalidSyntaxException {
         BraceLayout result = new Parser() {{
             openBraces = context;
         }}.getBraceLayout(input);
