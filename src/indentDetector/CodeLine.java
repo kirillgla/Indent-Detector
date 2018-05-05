@@ -1,5 +1,8 @@
 package indentDetector;
 
+/**
+ * Contains information about file line
+ */
 public final class CodeLine {
     private IndentType indentType;
     private int indentSize;

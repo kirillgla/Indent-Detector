@@ -80,6 +80,16 @@ public class Program {
         return lines.toArray(new String[0]);
     }
 
+    /**
+     * Analyzes data in file
+     * @param inputs input file contents
+     * @return information about lines in file
+     * @throws InvalidIndentationException
+     *  when file has mixed space and tab indents
+     * @throws InvalidSyntaxException
+     *  when file has closing brace
+     *  without corresponding opening one
+     */
     private static CodeLine[] parseLines(String[] inputs) throws InvalidIndentationException, InvalidSyntaxException {
         Parser parser = new Parser();
         ArrayList<CodeLine> lines = new ArrayList<>();
@@ -94,7 +104,7 @@ public class Program {
     }
 
     /**
-     * Decide which indent type is present in file
+     * Decides which indent type is present in file
      * @param lines data to be analysed
      * @return indent type in file
      * @throws InvalidIndentationException
@@ -151,6 +161,17 @@ public class Program {
         return mismatchesFound;
     }
 
+    /**
+     * Assuming all lines have consistent indentation,
+     * determines most plausible for given text indentation size
+     * (from 1 to {@param maxIndentSize})
+     * @param lines text to be analyzed
+     * @param maxIndentSize max indentation size to be tested
+     * @return number of characters in the most suitable indentation size
+     * @throws AmbiguousIndentationException
+     *  when all indentation sizes tested
+     *  resulted in too many mismatches
+     */
     private static int getBestMatch(CodeLine[] lines, int maxIndentSize) throws AmbiguousIndentationException {
         if (maxIndentSize < 1) {
             throw new RuntimeException("Error: at least one indentation should be possible");

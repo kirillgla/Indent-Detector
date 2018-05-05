@@ -3,11 +3,17 @@ package indentDetector;
 import java.util.ArrayList;
 
 class Parser {
-    // Remembering this mode
-    // in between parsing operations
-    // allows to handle multiline comments
+    /**
+     * Remembering this mode
+     * in between parsing operations
+     * allows to handle multiline comments
+     */
     private ParseMode parseMode;
 
+    /**
+     * Required for correct parsing of `case` block
+     * terminated without `break` operator
+     */
     ArrayList<OpenBraceType> openBraces;
 
     // It isn't really necessary to store these
@@ -34,6 +40,10 @@ class Parser {
         openBraces = new ArrayList<>();
     }
 
+    /**
+     * Notifies all listeners about next char
+     * @param nextChar char to give to listeners
+     */
     private void invalidateDetectors(char nextChar) {
         singleLineCommentDetector.nextChar(nextChar);
         openCommentDetector.nextChar(nextChar);
@@ -44,15 +54,13 @@ class Parser {
         breakDetector.nextChar(nextChar);
     }
 
-    // input is assumed to contain one line only
-
     /**
      * Gets information about line.
      * Assumes that lines are given in the order they apear in file.
-     * @param input line to be parsed
+     * @param input one line to be parsed
      * @return information about line
      * @throws InvalidIndentationException
-     *  when line appears to have mixed indentation
+     *  when line has mixed indentation
      * @throws InvalidSyntaxException
      *  when comes across a closing brace
      *  that doesn't have a corresponding opening one
@@ -76,6 +84,14 @@ class Parser {
         return new CodeLine(indentType, indentSize, braceLayout);
     }
 
+    /**
+     * Analyzes setting of braces in given line
+     * @param input line to be processed
+     * @return information about braces in line
+     * @throws InvalidSyntaxException
+     *  when comes across a closing brace
+     *  that didn't have a corresponding opening one
+     */
     BraceLayout getBraceLayout(String input) throws InvalidSyntaxException {
         int trueOpenBraces = 0;
         int trueClosingBraces = 0;
@@ -104,6 +120,7 @@ class Parser {
                     continue;
             }
 
+            // Stop parsing when detected beginning of non-code date
             if (singleLineCommentDetector.isMatch()) {
                 break;
             }
@@ -123,6 +140,7 @@ class Parser {
                 continue;
             }
 
+            // Handle `switch` operator members
             if (caseDetector.isMatch()) {
                 if (openBraces.size() == 0) {
                     throw new InvalidSyntaxException();
@@ -143,6 +161,7 @@ class Parser {
                 }
             }
 
+            // Handle ordinary braces
             if (current == '{') {
                 trueOpenBraces++;
                 openBraces.add(OpenBraceType.Other);
@@ -162,6 +181,13 @@ class Parser {
         return s == null || s.isEmpty() || s.trim().isEmpty() || s.trim().startsWith("//");
     }
 
+    /**
+     * Determines indent type of given line
+     * @param input line to analyze
+     * @return type of indentation symbol used in {@param input}
+     * @throws InvalidIndentationException
+     *  when line has mixed indentation
+     */
     static IndentType getIndentType(String input) throws InvalidIndentationException {
         IndentType result = IndentType.Unknown;
 
@@ -186,7 +212,13 @@ class Parser {
         return result;
     }
 
-    // input is assumed to contain either only spaces or only tabs
+    /**
+     * Assuming indent type is valid,
+     * determines number of characters
+     * used as indents in given line
+     * @param input file line to analyze
+     * @return number of characters used for indentation
+     */
     static int getIndentSize(String input) {
         int count = 0;
         while (input.charAt(count) == ' ' || input.charAt(count) == '\t') {

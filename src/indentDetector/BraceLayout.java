@@ -1,5 +1,10 @@
 package indentDetector;
 
+/**
+ * Contains information
+ * about the way braces are placed
+ * in file line
+ */
 public class BraceLayout {
     private int openingBraces;
     private int closingBraces;
@@ -27,15 +32,15 @@ public class BraceLayout {
         return "" + openingBraces + " opening, " + closingBraces + " closing" + (startsWithClosingBrace? ", starts with closing": "");
     }
 
-    public int getOpeningBraces() {
+    int getOpeningBraces() {
         return openingBraces;
     }
 
-    public int getClosingBraces() {
+    int getClosingBraces() {
         return closingBraces;
     }
 
-    public boolean startsWithClosing() {
+    boolean startsWithClosing() {
         return startsWithClosingBrace;
     }
 

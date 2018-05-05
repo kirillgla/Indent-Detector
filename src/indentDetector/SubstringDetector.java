@@ -2,6 +2,10 @@ package indentDetector;
 
 import java.util.regex.Pattern;
 
+/**
+ * Tool that observes input and notifies
+ * whether regex it is listening for matches
+ */
 class SubstringDetector {
     private Pattern pattern;
     private int maxLength;
@@ -15,7 +19,7 @@ class SubstringDetector {
     }
 
     /**
-     * @return isMatch after adding
+     * @return {@link #isMatch} after adding
      */
     boolean nextChar(char next) {
         if (words.length() >= maxLength) {
