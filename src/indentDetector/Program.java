@@ -16,7 +16,7 @@ public class Program {
      * (indent mismatch number) to (line number) ratio.
      * used in {@link #getBestMatch}
      */
-    private static final double AMBIGUITY_LIMIT = 0.65;
+    private static final double AMBIGUITY_LIMIT = 0.6;
 
     public static void main(String[] args) {
         if (args.length == 0) {
@@ -26,6 +26,7 @@ public class Program {
 
         if (args.length >= 2) {
             System.out.println("Too many arguments provided");
+            return;
         }
 
         try {
@@ -46,13 +47,13 @@ public class Program {
                     break;
             }
         } catch (IOException e) {
-            System.err.println("Could not access file");
+            System.err.println("Could not access file.");
         } catch (InvalidIndentationException e) {
-            System.out.println("File has mixed space and tab indents");
+            System.out.println("File seems to have mixed space and tab indents...");
         } catch (AmbiguousIndentationException e) {
             System.out.println("No indents seem good enough for that file...");
         } catch (InvalidSyntaxException e) {
-            System.out.println("File doesn't contain valid java code");
+            System.out.println("File doesn't seem to contain valid java code...");
         }
     }
 
@@ -147,7 +148,7 @@ public class Program {
                     + ": "
                     + numberOfMismatches
                     + " out of "
-                    + lines.length / 2 + " maximum");
+                    + lines.length *AMBIGUITY_LIMIT + " maximum");
 
             if (numberOfMismatches < minNumberOfMismatches) {
                 minNumberOfMismatches = numberOfMismatches;

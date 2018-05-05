@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5698fe07-7bd3-4d6f-a7cc-5ac9941fed7e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/indentDetector/InvalidSyntaxException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/AmbiguousIndentationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/AmbiguousIndentationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/indentDetector/IndentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/IndentType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/indentDetector/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/indentDetector/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/indentDetector/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/indentDetector/ParserTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,30 +23,55 @@
       <file leaf-file-name="Program.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/indentDetector/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="54" column="71" lean-forward="true" selection-start-line="54" selection-start-column="71" selection-end-line="54" selection-end-column="71" />
+            <state relative-caret-position="154">
+              <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
               <folding>
-                <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
                 <element signature="method#getLines#0;class#Program#0" />
                 <element signature="method#parseLines#0;class#Program#0" />
                 <element signature="method#getIndentType#0;class#Program#0" />
                 <element signature="e#2784#2839#0" />
                 <element signature="method#getNumberOfMismatches#0;class#Program#0" />
-                <element signature="method#getBestMatch#0;class#Program#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IndentType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/indentDetector/IndentType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/indentDetector/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="67" column="54" lean-forward="true" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+            <state relative-caret-position="378">
+              <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
               <folding>
-                <element signature="e#6643#6644#0" expanded="true" />
-                <element signature="e#6688#6689#0" expanded="true" />
+                <element signature="e#6737#6738#0" expanded="true" />
+                <element signature="e#6782#6783#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParserTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/indentDetector/ParserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AmbiguousIndentationException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/indentDetector/AmbiguousIndentationException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -79,12 +103,10 @@
         <option value="$PROJECT_DIR$/src/InvalidIndentationException.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/ComplicatedBraceLayoutException.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/EndType.java" />
-        <option value="$PROJECT_DIR$/src/indentDetector/IndentType.java" />
         <option value="$PROJECT_DIR$/test/SubstringDetectorTest.java" />
         <option value="$PROJECT_DIR$/test/indentDetector/ProgramTest.java" />
         <option value="$PROJECT_DIR$/test/indentDetector/CodeLineTest.java" />
         <option value="$PROJECT_DIR$/test/indentDetector/GetIndentSizeTester.java" />
-        <option value="$PROJECT_DIR$/test/indentDetector/ParserTest.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/ParseMode.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/SubstringDetector.java" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -93,11 +115,13 @@
         <option value="$PROJECT_DIR$/src/indentDetector/BraceLayout.java" />
         <option value="$PROJECT_DIR$/test/indentDetector/SubstringDetectorTest.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/CodeLine.java" />
-        <option value="$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/InvalidSyntaxException.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/AmbiguousIndentationException.java" />
-        <option value="$PROJECT_DIR$/src/indentDetector/Parser.java" />
+        <option value="$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java" />
         <option value="$PROJECT_DIR$/src/indentDetector/Program.java" />
+        <option value="$PROJECT_DIR$/src/indentDetector/IndentType.java" />
+        <option value="$PROJECT_DIR$/src/indentDetector/Parser.java" />
+        <option value="$PROJECT_DIR$/test/indentDetector/ParserTest.java" />
       </list>
     </option>
   </component>
@@ -259,7 +283,7 @@
       <updated>1525335256058</updated>
       <workItem from="1525335257901" duration="9008000" />
       <workItem from="1525356780433" duration="31881000" />
-      <workItem from="1525539329733" duration="2766000" />
+      <workItem from="1525539329733" duration="3821000" />
     </task>
     <servers />
   </component>
@@ -296,7 +320,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43655000" />
+    <option name="totallyTimeSpent" value="44710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -304,7 +328,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32825485" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32732317" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -316,7 +340,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32965517" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -349,13 +373,11 @@
         <state relative-caret-position="2064">
           <caret line="129" column="74" selection-start-line="129" selection-start-column="74" selection-end-line="129" selection-end-column="74" />
           <folding>
-            <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="method#parseLines#0;class#Program#0" />
             <element signature="method#getIndentType#0;class#Program#0" />
             <element signature="e#2784#2839#0" />
             <element signature="method#getNumberOfMismatches#0;class#Program#0" />
-            <element signature="method#getBestMatch#0;class#Program#0" />
           </folding>
         </state>
       </provider>
@@ -375,13 +397,11 @@
         <state relative-caret-position="352">
           <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
           <folding>
-            <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="method#parseLines#0;class#Program#0" />
             <element signature="method#getIndentType#0;class#Program#0" />
             <element signature="e#2784#2839#0" />
             <element signature="method#getNumberOfMismatches#0;class#Program#0" />
-            <element signature="method#getBestMatch#0;class#Program#0" />
           </folding>
         </state>
       </provider>
@@ -461,13 +481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/indentDetector/IndentType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/indentDetector/InvalidIndentationException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -479,23 +492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/indentDetector/ParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="method#testIsNullOrWhitespaceOnNull#0;class#ParserTest#0" />
-            <element signature="method#testIsNullOrWhitespaceOnEmptyString#0;class#ParserTest#0" />
-            <element signature="method#testIsNullOrWhiteSpaceOnWhitespaceString#0;class#ParserTest#0" />
-            <element signature="method#testIsNullOrWhitespaceOnNonEmptyString#0;class#ParserTest#0" />
-            <element signature="method#testGetIndentTypeOnSpaces#0;class#ParserTest#0" />
-            <element signature="method#testGetIndentTypeOnTabs#0;class#ParserTest#0" />
-            <element signature="method#testGetIndentTypeOnMixed#0;class#ParserTest#0" />
-            <element signature="method#testGetIndentTypeOnUnknown#0;class#ParserTest#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -534,16 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/indentDetector/GetIndentSizeTester.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
@@ -571,34 +557,56 @@
     <entry file="file://$PROJECT_DIR$/src/indentDetector/AmbiguousIndentationException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
-          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/indentDetector/GetBraceLayoutTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/indentDetector/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="54" column="71" lean-forward="true" selection-start-line="54" selection-start-column="71" selection-end-line="54" selection-end-column="71" />
+        <state relative-caret-position="154">
+          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
           <folding>
-            <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
             <element signature="method#getLines#0;class#Program#0" />
             <element signature="method#parseLines#0;class#Program#0" />
             <element signature="method#getIndentType#0;class#Program#0" />
             <element signature="e#2784#2839#0" />
             <element signature="method#getNumberOfMismatches#0;class#Program#0" />
-            <element signature="method#getBestMatch#0;class#Program#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/indentDetector/IndentType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/indentDetector/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="67" column="54" lean-forward="true" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+        <state relative-caret-position="378">
+          <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
           <folding>
-            <element signature="e#6643#6644#0" expanded="true" />
-            <element signature="e#6688#6689#0" expanded="true" />
+            <element signature="e#6737#6738#0" expanded="true" />
+            <element signature="e#6782#6783#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/indentDetector/ParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>

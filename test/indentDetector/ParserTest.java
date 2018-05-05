@@ -55,7 +55,7 @@ public class ParserTest {
     // ==== getIndentType tests ====
 
     @Test
-    public void testGetIndentTypeOnSpaces() {
+    public void testGetIndentTypeOnSpaces() throws InvalidIndentationException {
         String input = "    public static void main(string[] args) {";
 
         IndentType indentType = Parser.getIndentType(input);
@@ -64,7 +64,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testGetIndentTypeOnTabs() {
+    public void testGetIndentTypeOnTabs() throws InvalidIndentationException {
         String input = "\tpublic static void main(string[] args) {";
 
         IndentType indentType = Parser.getIndentType(input);
@@ -72,17 +72,15 @@ public class ParserTest {
         assertEquals(IndentType.Tabs, indentType);
     }
 
-    @Test
-    public void testGetIndentTypeOnMixed() {
+    @Test(expected = InvalidIndentationException.class)
+    public void testGetIndentTypeOnMixed() throws InvalidIndentationException {
         String input = " \t   public static void main(string[] args) {";
 
-        IndentType indentType = Parser.getIndentType(input);
-
-        assertEquals(IndentType.Mixed, indentType);
+        Parser.getIndentType(input);
     }
 
     @Test
-    public void testGetIndentTypeOnUnknown() {
+    public void testGetIndentTypeOnUnknown() throws InvalidIndentationException {
         String input = "package indentDetector;";
 
         IndentType indentType = Parser.getIndentType(input);

@@ -44,8 +44,18 @@ class Parser {
         breakDetector.nextChar(nextChar);
     }
 
+    // input is assumed to contain one line only
+
     /**
-     * input is assumed to contain one line only
+     * Gets information about line.
+     * Assumes that lines are given in the order they apear in file.
+     * @param input line to be parsed
+     * @return information about line
+     * @throws InvalidIndentationException
+     *  when line appears to have mixed indentation
+     * @throws InvalidSyntaxException
+     *  when comes across a closing brace
+     *  that doesn't have a corresponding opening one
      */
     CodeLine parse(String input) throws InvalidIndentationException, InvalidSyntaxException {
         if (Parser.isNullOrWhitespace(input)) {
@@ -58,10 +68,6 @@ class Parser {
         breakDetector.clear();
 
         IndentType indentType = getIndentType(input);
-
-        if (indentType == IndentType.Mixed) {
-            throw new InvalidIndentationException();
-        }
 
         int indentSize = getIndentSize(input);
 
@@ -121,19 +127,16 @@ class Parser {
                 if (openBraces.size() == 0) {
                     throw new InvalidSyntaxException();
                 }
-
                 if (openBraces.get(openBraces.size() - 1) != OpenBraceType.Case) {
                     // otherwise previous label must've been terminated without `break`
                     trueOpenBraces++;
                     openBraces.add(OpenBraceType.Case);
                 }
             }
-
             if (breakDetector.isMatch()) {
                 if (openBraces.size() == 0) {
                     throw new InvalidSyntaxException();
                 }
-
                 if (openBraces.get(openBraces.size() - 1) == OpenBraceType.Case) {
                     trueClosingBraces++;
                     openBraces.remove(openBraces.size() - 1);
@@ -159,7 +162,7 @@ class Parser {
         return s == null || s.isEmpty() || s.trim().isEmpty() || s.trim().startsWith("//");
     }
 
-    static IndentType getIndentType(String input) {
+    static IndentType getIndentType(String input) throws InvalidIndentationException {
         IndentType result = IndentType.Unknown;
 
         for (int i = 0; i < input.length(); i++) {
@@ -174,7 +177,7 @@ class Parser {
                     return IndentType.Unknown;
                 }
             } else if (result == IndentType.Tabs && current == ' ' || result == IndentType.Spaces && current == '\t') {
-                return IndentType.Mixed;
+                throw new InvalidIndentationException();
             } else {
                 return result;
             }
@@ -183,10 +186,7 @@ class Parser {
         return result;
     }
 
-    /**
-     * input is assumed to contain
-     * either only spaces or only tabs
-     */
+    // input is assumed to contain either only spaces or only tabs
     static int getIndentSize(String input) {
         int count = 0;
         while (input.charAt(count) == ' ' || input.charAt(count) == '\t') {
