@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5698fe07-7bd3-4d6f-a7cc-5ac9941fed7e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/indentDetector/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indentDetector/Program.java" afterDir="false" />
-    </list>
+    <list default="true" id="5698fe07-7bd3-4d6f-a7cc-5ac9941fed7e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +18,8 @@
       <file leaf-file-name="Program.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/indentDetector/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
+            <state relative-caret-position="304">
+              <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
               <folding>
                 <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
                 <element signature="docComment;method#getLines#0;class#Program#0" />
@@ -247,7 +245,7 @@
       <workItem from="1525335257901" duration="9008000" />
       <workItem from="1525356780433" duration="31881000" />
       <workItem from="1525539329733" duration="6124000" />
-      <workItem from="1525552962450" duration="2593000" />
+      <workItem from="1525552962450" duration="2730000" />
     </task>
     <servers />
   </component>
@@ -284,7 +282,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49606000" />
+    <option name="totallyTimeSpent" value="49743000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -649,8 +647,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/indentDetector/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
+        <state relative-caret-position="304">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
           <folding>
             <element signature="docComment;field#AMBIGUITY_LIMIT#0;class#Program#0" />
             <element signature="docComment;method#getLines#0;class#Program#0" />
